@@ -1,5 +1,5 @@
-const fs = require('fs');
-const express = require('express');
+const fs = require("fs");
+const express = require("express");
 
 const app = express();
 const port = 3000;
@@ -17,9 +17,9 @@ const tours = JSON.parse(
   fs.readFileSync(`${__dirname}/dev-data/data/tours-simple.json`)
 );
 
-app.get('/api/v1/tours', (req, res) => {
+app.get("/api/v1/tours", (req, res) => {
   res.status(200).json({
-    status: 'success',
+    status: "success",
     result: tours.length,
     data: {
       tours: tours,
@@ -27,10 +27,12 @@ app.get('/api/v1/tours', (req, res) => {
   });
 });
 
-app.post('/api/v1/tours', (req, res) => {
+app.post("/api/v1/tours", (req, res) => {
   res.status(200).json({
     status: 200,
-    data: {},
+    data: {
+      tours: tours,
+    },
   });
 });
 app.listen(port, () => {
